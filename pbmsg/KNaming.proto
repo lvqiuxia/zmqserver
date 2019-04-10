@@ -1,0 +1,53 @@
+syntax = "proto2";
+
+package knaming;
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//                              KNamingNotify
+//
+////////////////////////////////////////////////////////////////////////////////
+message KNamingInfo {                 
+    required string  service    = 1;    // ��������    
+    required uint32  state      = 2;    // ����ĵ�ǰ״̬
+    optional string  object     = 3;    // ����ʵ������    
+    optional string  domain     = 4;    // ��������������    
+    optional string  protocol   = 5;    // ����Э��
+    optional uint32  priority   = 11;   // �������ȼ�
+    optional string  endpoint   = 12;   // ����˵�
+    optional bool    stateless  = 13;   // �����Ƿ���״̬
+}
+
+message KNamingNotify {
+    required uint32  sign         = 1;    // ��Ϣ��־: 0x444d424e = "DMBN"
+    repeated KNamingInfo nameList = 2;
+}
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//                              KNamingDump
+//
+////////////////////////////////////////////////////////////////////////////////
+message KNamingObjectInfo {                 
+    required string  name       = 1;    // ��������    
+    required string  endpoint   = 2;    // ����˵�
+    required uint32  priority   = 3;    // �������ȼ�
+    required uint32  hits       = 4;    // ����ѡȡ����    
+    required uint32  state      = 5;    // ����ĵ�ǰ״̬    
+    optional string  endpoint2  = 10;   // ����˵�(˫��)
+    optional uint32  hits2      = 11;   // ����ѡȡ����(˫��) 
+}
+
+message KNamingServiceInfo {                 
+    required string  service    = 1;    // ��������    
+    required string  domain     = 2;    // ��������������    
+    required string  protocol   = 3;    // ����Э��    
+    required bool    stateless  = 4;    // ����Э��    
+    repeated string  recommands = 5;    // �Ƽ�����ʵ��    
+    repeated KNamingObjectInfo  objects = 6;    // ����ʵ������
+}
+
+message KNamingDump {
+    repeated KNamingServiceInfo service = 1;
+}
