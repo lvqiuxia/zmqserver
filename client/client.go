@@ -97,7 +97,7 @@ func (f handleFunc) StartZmqForReqMsg() ([]byte, error){
 	// createRequestMsg
 	MsgType := "REQ"
 	Method := "get"
-	Service := "one"
+	Service := "testService"
 	Instance := "*"
 	Domain := "local"
 	Protocol := "msgp"
