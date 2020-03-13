@@ -36,5 +36,4 @@ func main(){
 	case <-c:
 		return
 	}
-
 }
